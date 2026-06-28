@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-
 const Topbar = ({ toggleSidebar, user }) => {
   const [now, setNow] = useState(new Date());
 
@@ -15,10 +14,10 @@ const Topbar = ({ toggleSidebar, user }) => {
         <button className="sidebar-toggle" onClick={toggleSidebar} aria-label="Toggle sidebar">
           <span /><span /><span />
         </button>
-        <span className="topbar__logo">Menu</span>
+        <span className="topbar__brand">TaskTracker</span>
       </div>
       <div className="topbar__center">
-        {/* Search / Filter moved to main-panel */}
+        {/* Intentionally empty — search/filter in main-panel */}
       </div>
       <div className="topbar__right">
         <div className="clock">
