@@ -5,7 +5,7 @@ TaskTracker is a modern, high-performance web application designed to help you c
 **🚀 Live Demo:** [https://tasktracker-ckt6.onrender.com](https://tasktracker-ckt6.onrender.com)
 
 <div align="center">
-  <img src="./screenshots/dashboard.png" alt="TaskTracker Dashboard Illustration" width="600" />
+  <img src="./screenshots/Screenshot%202026-06-28%20203057.png" alt="TaskTracker Dashboard" width="600" />
 </div>
 
 ## Features ✨
