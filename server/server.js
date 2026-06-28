@@ -5,6 +5,7 @@ require('dotenv').config();
 require('express-async-errors');
 
 const express      = require('express');
+const path         = require('path');
 const cors         = require('cors');
 const morgan       = require('morgan');
 const connectDB    = require('./config/db');
@@ -45,10 +46,19 @@ app.get('/api/health', (req, res) => {
   res.status(200).json({ success: true, message: 'Task Tracker API is running 🚀' });
 });
 
-// 404 handler — catches any route not matched above
-app.use((req, res) => {
-  res.status(404).json({ success: false, message: `Route not found: ${req.originalUrl}` });
-});
+// ── Serve Frontend in Production ──────────────────────────────────────────
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../client/dist')));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../client', 'dist', 'index.html'));
+  });
+} else {
+  // 404 handler for API — catches any route not matched above in development
+  app.use((req, res) => {
+    res.status(404).json({ success: false, message: `Route not found: ${req.originalUrl}` });
+  });
+}
 
 // ── Global Error Handler (must be LAST) ────────────────────────────────────
 app.use(errorHandler);
